@@ -5,9 +5,9 @@ nasm -f elf32 src/io/io.asm -o build/io.asm.o
 
 gcc -I./src -m32 -nostdlib -ffreestanding -c src/kernel/kernel.c -o build/kernel.o
 gcc -I./src -m32 -nostdlib -ffreestanding -c src/vga/vga.c -o build/vga.o
-gcc -I./src -m32 -nostdlib -ffreestanding -c src/mouse/mouse.c -o build/mouse.o
+gcc -I./src -m32 -nostdlib -ffreestanding -c src/ps2/ps2.c -o build/ps2.o
 
-ld -m elf_i386 -T src/linker/linker.ld -o iso/boot/kernel build/kernel.asm.o build/io.asm.o build/kernel.o build/vga.o build/mouse.o
+ld -m elf_i386 -T src/linker/linker.ld -o iso/boot/kernel build/kernel.asm.o build/io.asm.o build/kernel.o build/vga.o build/ps2.o
 
 grub-mkrescue -o bin/MouseOS.iso iso
 

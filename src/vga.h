@@ -6,6 +6,11 @@
 #define VGA_WIDTH 80
 #define VGA_HEIGHT 25
 
+#define FONDO_AZUL 0x1F
+#define FONDO_VERDE 0x2F
+#define FONDO_ROJO 0x4F
+#define FONDO_AMARILLO 0xEF
+
 #include <stdint.h>
 #include <stddef.h>
 

@@ -53,7 +53,7 @@ void println(const char* str) {
 	size_t len = strlen(str);
 
 	for(int i = 0; i < len; i++) {
-		perfectchar(str[i], 15);
+		perfectchar(str[i], FONDO_AZUL);
 	}
 
 }
@@ -64,7 +64,7 @@ void clear() {
 
 	for(int y = 0; y < VGA_HEIGHT; y++) {
 		for(int x = 0; x < VGA_WIDTH; x++) {
-			xychar(x, y, ' ', 0);
+			xychar(x, y, ' ', FONDO_AMARILLO);
 		}
 	}
 
