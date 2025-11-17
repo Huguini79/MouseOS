@@ -21,6 +21,8 @@ struct vga {
 };
 
 void init_screen();
+void cursor_1(int mouse_x, int mouse_y);
+void cursor_2(int mouse_x, int mouse_y);
 void xychar(int x, int y, char c, char color);
 void perfectchar(char c, char color);
 size_t strlen(const char* str);

@@ -16,6 +16,8 @@ int8_t  mouse_byte[3];
 #define MOUSE_F_BIT  0x20
 #define MOUSE_V_BIT  0x08
 
+const char* mouse_click_left_or_right;
+
 int mouse_x = 40;
 int mouse_y = 12;
 
@@ -45,7 +47,7 @@ uint8_t mouse_read() {
 }
 
 void mouse_process_byte(uint8_t data) {
-	    xychar(mouse_x, mouse_y, ' ', 0xE4);
+		cursor_1(mouse_x, mouse_y);
 	    switch (mouse_cycle) {
 		case 0:
 		    mouse_byte[0] = data;
@@ -79,12 +81,12 @@ void mouse_process_byte(uint8_t data) {
 		    if (mouse_y > 24) mouse_y = 24;
 
 		    // Dibujar cursor
-		    xychar(mouse_x, mouse_y, '/', 0x42);
+		    cursor_2(mouse_x, mouse_y);
 
 		    // Detectar clicks
-		    if (mouse_byte[0] & 0x01) println("Click izquierdo");
-		    if (mouse_byte[0] & 0x02) println("Click derecho");
-		    if (mouse_byte[0] & 0x04) println("Click central");
+		    if (mouse_byte[0] & 0x01) mouse_click_left_or_right = "Click izquierdo";
+		    if (mouse_byte[0] & 0x02) mouse_click_left_or_right = "Click derecho";
+		    if (mouse_byte[0] & 0x04) mouse_click_left_or_right = "Click central";
 
 		    mouse_cycle = 0;
 		    break;

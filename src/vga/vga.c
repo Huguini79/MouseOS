@@ -12,6 +12,14 @@ void init_screen() {
 
 }
 
+void cursor_1(int mouse_x, int mouse_y) {
+			    xychar(mouse_x, mouse_y, vga->video_mem[(mouse_y * 80) + mouse_x], 0xE4);
+}
+
+void cursor_2(int mouse_x, int mouse_y) {
+			    xychar(mouse_x, mouse_y, vga->video_mem[(mouse_y * 80) + mouse_x], 0x42);
+}
+
 void xychar(int x, int y, char c, char color) {
 	vga->video_mem[(y * VGA_WIDTH) + x] = (uint16_t)(color << 8) | c;
 }
@@ -30,11 +38,9 @@ void perfectchar(char c, char color) {
 		vga->col = 0;
 	}
 
-	/*
 	if(vga->row >= VGA_HEIGHT) {
 		clear();
 	}
-	*/
 
 }
 
@@ -53,7 +59,7 @@ void println(const char* str) {
 	size_t len = strlen(str);
 
 	for(int i = 0; i < len; i++) {
-		perfectchar(str[i], FONDO_AZUL);
+		perfectchar(str[i], 0xE4);
 	}
 
 }
